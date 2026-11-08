@@ -25,7 +25,8 @@ from homeassistant.helpers.dispatcher import (
     async_dispatcher_send,
 )
 from homeassistant.helpers.event import async_track_time_interval
-from homeassistant.helpers.typing import ConfigType, HomeAssistantType
+from homeassistant.core import ConfigType, HomeAssistant
+
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -81,7 +82,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 )
 
 async def async_setup_platform(
-        hass: HomeAssistantType, config: ConfigType, async_add_entities, discovery_info=None
+        hass: HomeAssistant, config: ConfigType, async_add_entities, discovery_info=None
 ):
     """Set up the VICEmergency Feed platform."""
     scan_interval = config.get(CONF_SCAN_INTERVAL, SCAN_INTERVAL)
